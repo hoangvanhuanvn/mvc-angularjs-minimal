@@ -125,6 +125,24 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular-file-upload-all.js" />
+    <Content Include="Scripts\angular-file-upload-all.min.js" />
+    <Content Include="Scripts\angular-file-upload-shim.js" />
+    <Content Include="Scripts\angular-file-upload-shim.min.js" />
+    <Content Include="Scripts\angular-file-upload.js" />
+    <Content Include="Scripts\angular-file-upload.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -143,10 +161,21 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\angular.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\angular-route.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\angular-resource.min.js.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
