@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @{
-        var bundles = BundleTable.Bundles;
-
-        bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/angular.js", "~/Scripts/angular-route.js", "~/Scripts/angular-resource.js"));
-
-        bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
-
-        bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-
-        bundles.Add(new StyleBundle("~/Content/css/bootstrap").Include("~/Content/bootstrap.css", "~/Content/bootstrap-theme.css"));
+        Html.RenderPartial("_Bundles");
     }
 </head>
 <body>
     @RenderBody()
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/bootstrap")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
