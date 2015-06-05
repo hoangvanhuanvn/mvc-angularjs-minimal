@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace AngularJSClientApp.Controllers
+namespace AngularjsApp.MvcClient.Controllers
 {
     public class HomeController : Controller
     {
