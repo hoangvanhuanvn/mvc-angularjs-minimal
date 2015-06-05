@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace AngularJSClientApp.App_Start
+namespace AngularjsApp.MvcClient.App_Start
 {
     public class FilterConfig
     {
