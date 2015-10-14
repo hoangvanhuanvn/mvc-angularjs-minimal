@@ -1,0 +1,1 @@
+﻿Rabbit AngularJS Client Template
