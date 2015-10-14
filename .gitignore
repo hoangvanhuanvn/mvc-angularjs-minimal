@@ -4,3 +4,6 @@
 /AngularjsApp.MvcClient/AngularjsApp.MvcClient.csproj.user
 /AngularjsApp.MvcClient/bin
 /AngularjsApp.MvcClient/obj
+/packages
+/Rabbit.AngularjsApp/obj
+/Rabbit.AngularjsApp/bin

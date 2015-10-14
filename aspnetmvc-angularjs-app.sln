@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{71BE0F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularjsApp.MvcClient", "AngularjsApp.MvcClient\AngularjsApp.MvcClient.csproj", "{DE7B5384-FEB0-43FE-81F1-3062B355400A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.AngularjsApp", "Rabbit.AngularjsApp\Rabbit.AngularjsApp.csproj", "{DE7B5384-FEB0-43FE-81F1-3062B355400A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
