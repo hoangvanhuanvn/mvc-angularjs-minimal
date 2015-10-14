@@ -8,6 +8,5 @@ namespace AngularjsApp.MvcClient.Controllers
         {
             return View();
         }
-
     }
 }

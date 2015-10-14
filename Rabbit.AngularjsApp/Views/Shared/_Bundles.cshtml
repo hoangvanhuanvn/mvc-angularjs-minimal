@@ -1,9 +1,13 @@
 ﻿@{
     var bundles = BundleTable.Bundles;
 
-    bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/angular.js", "~/Scripts/angular-route.js", "~/Scripts/angular-resource.js"));
+    bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/angular.js",
+        "~/Scripts/angular-route.js",
+        "~/Scripts/angular-resource.js"));
 
-    bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/Scripts/app", "*.js", false));
+    bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/Scripts/app", "*.js", false)
+        .IncludeDirectory("~/Scripts/app/services", "*.js", false)
+        .IncludeDirectory("~/Scripts/app/controllers", "*.js", false));
 
     bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-2.*"));
 
