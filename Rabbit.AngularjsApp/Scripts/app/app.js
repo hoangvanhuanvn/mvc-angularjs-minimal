@@ -5,10 +5,10 @@
         $routeProvider
             .when('/', {
                 controller: 'WelcomeController',
-                templateUrl: '/Demo/Welcome',
+                templateUrl: '/Template/Welcome',
             }).when('/test', {
                 controller: 'TestController',
-                templateUrl: '/Demo/Test',
+                templateUrl: '/Template/Test',
             }).otherwise({
                 redirectTo: '/'
             });
