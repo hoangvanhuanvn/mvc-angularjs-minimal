@@ -3,7 +3,7 @@
  * progress, resize, thumbnail, preview, validation and CORS
  * FileAPI Flash shim for old browsers not supporting FormData
  * @author  Danial  <danial.farid@gmail.com>
- * @version 9.0.9
+ * @version 9.0.13
  */
 
 (function () {
@@ -427,7 +427,7 @@ if (!window.FileReader) {
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
  * @author  Danial  <danial.farid@gmail.com>
- * @version 9.0.9
+ * @version 9.0.13
  */
 
 if (window.XMLHttpRequest && !(window.FileAPI && FileAPI.shouldLoad)) {
@@ -448,7 +448,7 @@ if (window.XMLHttpRequest && !(window.FileAPI && FileAPI.shouldLoad)) {
 
 var ngFileUpload = angular.module('ngFileUpload', []);
 
-ngFileUpload.version = '9.0.9';
+ngFileUpload.version = '9.0.13';
 
 ngFileUpload.service('UploadBase', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
   var upload = this;
@@ -605,6 +605,9 @@ ngFileUpload.service('UploadBase', ['$http', '$q', '$timeout', function ($http, 
   };
 
   this.jsonBlob = function (val) {
+    if (val != null && !angular.isString(val)) {
+      val = JSON.stringify(val);
+    }
     var blob = new Blob([val], {type: 'application/json'});
     blob._ngfBlob = true;
     return blob;
@@ -803,7 +806,8 @@ ngFileUpload.service('Upload', ['$parse', '$timeout', '$compile', 'UploadResize'
 
   function resize(files, attr, scope, callback) {
     var param = upload.attrGetter('ngfResize', attr, scope);
-    if (!param || !upload.isResizeSupported()) return callback();
+    if (!param || !upload.isResizeSupported() || !files.length) return callback();
+    if (!param.width || !param.height) throw 'width and height are mandatory for ngf-resize';
     var count = files.length;
     var checkCallback = function () {
       count--;
@@ -1560,7 +1564,7 @@ ngFileUpload.service('UploadValidate', ['UploadDataUrl', '$q', '$timeout', funct
         var thisPendings = 0, hasError = false, dName = 'ngf' + name[0].toUpperCase() + name.substr(1);
         files = files.length === undefined ? [files] : files;
         angular.forEach(files, function (file) {
-          if (file.type.search(type) !== 0) {
+          if (type && (file.type == null || file.type.search(type) !== 0)) {
             return true;
           }
           var val = attrGetter(dName, {'$file': file}) || validatorVal(attrGetter('ngfValidate', {'$file': file}) || {});
@@ -1645,7 +1649,7 @@ ngFileUpload.service('UploadValidate', ['UploadDataUrl', '$q', '$timeout', funct
 
     validateAsync('validateAsyncFn', function () {
       return null;
-    }, /./, function (file, val) {
+    }, null, function (file, val) {
       return val;
     }, function (r) {
       return r === true || r === null || r === '';
@@ -1794,6 +1798,19 @@ ngFileUpload.service('UploadValidate', ['UploadDataUrl', '$q', '$timeout', funct
 
 ngFileUpload.service('UploadResize', ['UploadValidate', '$q', '$timeout', function (UploadValidate, $q, $timeout) {
   var upload = UploadValidate;
+
+  // add name getter to the blob constructor prototype
+  if (window.Object && Object.defineProperty) {
+    Object.defineProperty(Blob.prototype, 'name', {
+      get: function () {
+        return this.$ngfName;
+      },
+      set: function (v) {
+        this.$ngfName = v;
+      },
+      configurable: true
+    });
+  }
 
   /**
    * Conserve aspect ratio of the original region. Useful when shrinking/enlarging
